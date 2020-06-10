@@ -15,7 +15,7 @@ while (True):
 	cv2.imshow('frame', gray)
 	#Здесь важно указать время задержки (число). Без него
 	#захватывает только один кадр
-	if cv2.waitKey(2) & 0xFF == ord('a'):
+	if cv2.waitKey(25) & 0xFF == ord('a'):
 		break
 
 cap.release()
