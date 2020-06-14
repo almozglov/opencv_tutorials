@@ -11,8 +11,8 @@ while (True):
 	#cap.read выдаёт два значения: true при успешном захвате, и
 	# кадр 
 	ret, frame = cap.read()
-	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-	cv2.imshow('frame', gray)
+	#gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+	cv2.imshow('frame', frame)
 	#Здесь важно указать время задержки (число). Без него
 	#захватывает только один кадр
 	if cv2.waitKey(25) & 0xFF == ord('a'):
