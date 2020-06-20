@@ -1,45 +1,30 @@
 import cv2
 import numpy as np
 
+pic = cv2.imread('bp.jpg', 0)
 cap = cv2.VideoCapture(0)
+
+#image filtering (2D convolution)
+#kernel = np.ones((5, 5), np.float32)/25
+#res = cv2.filter2D(pic, -1, kernel)
+
+#Bluring
+#res = cv2.blur(pic, (5, 5))
+
+#Gaussian Filtering
+#res = cv2.GaussianBlur(pic, (5, 5), 0)
+
+#Median filtering wow
+#res = cv2.medianBlur(pic, 5)
+
+#Bilateral filtering
+
 
 while True:
 	ret, frame = cap.read()
-	grey = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-	'''
-	#Scaling
-	#rows, cols = grey.shape
-	#res = cv2.resize(grey, None, fx=0.2, fy=0.2)
-	'''
-	'''#Moving pic in window
-	#This row  represents the location for moving ([1, 0] on first and [0, 1] on second)
-	#are constant, third num are ''coordinates''
-	#M = np.float32([[1, 0, 200], [0, 1, 50]])
-	#This row applies transformation on image
-	#rows, cols = grey.shape
-	#res = cv2.warpAffine(grey, M, (cols, rows))
-	'''
-	'''#Rotation (X - angle)
-	#rows, cols = grey.shape
-	#M = cv2.getRotationMatrix2D((cols/2, rows/2), X, 1)
-	#res = cv2.warpAffine(grey, M, (cols, rows))
-	'''
-    '''#Affine transformation
-	#pts1 = np.float32([[50,50],[200,50],[50,200]])
-	#pts2 = np.float32([[10,100],[200,50],[100,250]])
-	#rows, cols = grey.shape
-	#M = cv2.getAffineTransform(pts1, pts2)
-	#res = cv2.warpAffine(grey, M, (cols, rows))
-	'''
-	'''#Perspective Transformation
-	rows, cols = grey.shape
-	pts1 = np.float32([[56,65],[368,52],[28,387],[389,390]])
-	pts2 = np.float32([[0,0],[300,0],[0,300],[300,300]])
-
-	M = cv2.getPerspectiveTransform(pts1, pts2)
-	res = cv2.warpPerspective(grey, M, (cols, rows))
-	'''
-	cv2.imshow("camera", res)
+	res = cv2.GaussianBlur(frame, (10, 10), sigmaX = 10)
+	cv2.imshow("BP", res)
+	#cv2.imshow("BP", cv2.resize(erosion_maj, None, fx=0.5, fy=0.5))
 	if cv2.waitKey(25)&0xFF == ord('q'):
 		break
 
